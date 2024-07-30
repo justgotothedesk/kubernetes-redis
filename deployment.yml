@@ -1,0 +1,23 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: annotation
+  labels:
+    app: flask
+  annotations:
+    manager: "shin"
+    contact: "010-3877-9687"
+    release-version: "v1.0"
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: flask
+  template:
+    metadata:
+      labels:
+        app: flask
+    spec:
+      containers:
+      - name: redis
+        image: redis:latest
